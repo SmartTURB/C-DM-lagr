@@ -40,9 +40,7 @@ with h5py.File('gdp1h_60d-pos0.h5', 'r') as h5f:
     lat0 = np.array(h5f.get('lat0'))
 ```
 
-The `v2c` variable has a shape of `(115450, 1440, 2)`, representing 115,450 segments, each with 1,440 time instants (hours) and 2 velocity components. These velocities are min-max normalized with `rx0=-3` and `rx1=3` in the h5 file as the dataset `train`.
-
-`lon0` and `lat0` are two arrays of shape `(115450)`, representing the initial positions of each segment.
+The `v2c` variable has a shape of `(115450, 1440, 2)`, representing 115,450 segments, each with 1,440 time instants (hours) and 2 velocity components. These velocities are min-max normalized with `rx0=-3` and `rx1=3` in the h5 file as the dataset `train`. `lon0` and `lat0` are two arrays, each of shape `(115450)`, corresponding to the initial longitude and latitude of each segment.
 
 To compute the positions for a specific segment (e.g., `idx`), one can use the [`clouddrift`](https://clouddrift.org/) API as follows:
 
