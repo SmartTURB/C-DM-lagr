@@ -24,4 +24,4 @@ Please refer to [Preparing Data](https://github.com/SmartTURB/diffusion-lagr#pre
 
 One can access the hourly drifter data at [this link](https://www.aoml.noaa.gov/phod/gdp/hourly_data.php). We used version 2.01 and selected the file `gdp-v2.01.nc`.
 
-To preprocess the data, including (1) dividing trajectories into non-overlapping 60-day segments and (2) removing segments with spurious points of high velocity or acceleration, run the script [`datasets/gdp1h/create-gdp1h_60d-datasets.sh`](./datasets/gdp1h/create-gdp1h_60d-datasets.sh). This will output two files: `gdp1h_60d-diffusion.h5` and `gdp1h_60d-pos0.h5`.
+To preprocess the data, including (1) dividing trajectories into non-overlapping 60-day segments and (2) removing segments with spurious points of high velocity or acceleration, run the script [`datasets/gdp1h/create-gdp1h_60d-datasets/create-gdp1h_60d-datasets.sh`](./datasets/gdp1h/create-gdp1h_60d-datasets/create-gdp1h_60d-datasets.sh). This will output two files: `gdp1h_60d-diffusion.h5` and `gdp1h_60d-pos0.h5`.
