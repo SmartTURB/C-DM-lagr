@@ -85,3 +85,14 @@ mpiexec -n $NUM_GPUS python scripts/palette_train.py $DATA_FLAGS $MODEL_FLAGS $D
 ```
 
 ## Sampling
+
+Please refer to the parent repository’s [Sampling section](https://github.com/SmartTURB/diffusion-lagr#sampling) for detailed information. The only additional option here is `--seed`, which sets the random seed for sampling.
+
+For Lagrangian turbulence reconstruction with a central gap of size $50\tau_\eta$, use the following flags:
+
+```bash
+DATA_FLAGS="--mask_mode center1d500 --dataset_path datasets/lagr/Lagr_u3c_diffusion_splits.h5 --dataset_name test"
+MODEL_FLAGS="--dims 1 --image_size 2000 --in_channels 3 --num_channels 128 --num_res_blocks 3 --attention_resolutions 250,125 --channel_mult 1,1,2,3,4"
+DIFFUSION_FLAGS="--diffusion_steps 800 --noise_schedule tanh6,1"
+SAMPLE_FLAGS="--num_samples 32768 --batch_size 64 --model_path /path/to/model.pt --seed 0"
+```
