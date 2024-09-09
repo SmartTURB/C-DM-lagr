@@ -9,3 +9,7 @@ This repository is based on [SmartTURB/diffusion-lagr](https://github.com/SmartT
 
 - **palette_diffusion**: Enables conditional diffusion models for image-to-image translation tasks. Reference:
   > Saharia, C. et al. (2021). *Palette: Image-to-Image Diffusion Models*. arXiv preprint arXiv:2111.05826.
+
+## Installation
+
+This codebase runs in a similar environment as [SmartTURB/diffusion-lagr](https://github.com/SmartTURB/diffusion-lagr#development-environment). Check [`env_setup.txt`](./env_setup.txt) for installation details with required packages and dependencies.
