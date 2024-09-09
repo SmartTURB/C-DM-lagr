@@ -78,4 +78,10 @@ DIFFUSION_FLAGS="--diffusion_steps 800 --noise_schedule tanh6,1"
 TRAIN_FLAGS="--lr 1e-4 --batch_size 64"
 ```
 
+To start training, run the following command:
+
+```bash
+mpiexec -n $NUM_GPUS python scripts/palette_train.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS
+```
+
 ## Sampling
