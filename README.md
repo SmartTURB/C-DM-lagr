@@ -69,4 +69,13 @@ DIFFUSION_FLAGS="--diffusion_steps 800 --noise_schedule tanh6,1"
 TRAIN_FLAGS="--lr 1e-4 --batch_size 64"
 ```
 
+For ocean drifter observation reconstruction with a central gap of 360 hours, use the following flags:
+
+```bash
+DATA_FLAGS="--mask_mode center1d360 --dataset_path datasets/gdp1h/gdp1h_v2c_diffusion_splits.h5 --dataset_name train"
+MODEL_FLAGS="--dims 1 --image_size 1440 --in_channels 2 --num_channels 128 --num_res_blocks 3 --attention_resolutions 180,90 --channel_mult 1,1,2,3,4"
+DIFFUSION_FLAGS="--diffusion_steps 800 --noise_schedule tanh6,1"
+TRAIN_FLAGS="--lr 1e-4 --batch_size 64"
+```
+
 ## Sampling
