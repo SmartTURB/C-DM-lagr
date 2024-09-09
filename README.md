@@ -26,27 +26,18 @@ One can access the hourly drifter data at [this link](https://www.aoml.noaa.gov/
 
 To preprocess the data, including (1) dividing trajectories into non-overlapping 60-day segments and (2) removing segments with spurious points of high velocity or acceleration, run the script [`datasets/gdp1h/create-gdp1h_60d-datasets/create-gdp1h_60d-datasets.sh`](./datasets/gdp1h/create-gdp1h_60d-datasets/create-gdp1h_60d-datasets.sh), which requires the `clouddrift` package ([clouddrift.org](https://clouddrift.org/)). This will output two files: `gdp1h_60d-diffusion.h5` and `gdp1h_60d-pos0.h5`.
 
-### Data Details and Usage
-
-The following example shows how to load and use the preprocessed data:
-
 ```python
 import h5py
 import numpy as np
 
-# Load normalized velocities from gdp1h_60d-diffusion.h5
 with h5py.File('gdp1h_60d-diffusion.h5', 'r') as h5f:
-    rx0 = np.array(h5f.get('min'))  # Minimum value (equals -3)
-    rx1 = np.array(h5f.get('max'))  # Maximum value (equals 3)
-    v2c = np.array(h5f.get('train'))  # Normalized velocities by min rx0 and max rx1
+    rx0 = np.array(h5f.get('min'))
+    rx1 = np.array(h5f.get('max'))
+    v2c = (np.array(h5f.get('train'))+1)*(rx1-rx0)/2 + rx0
 
-# Convert normalized velocities to the original scale
-velocities = (v2c + 1) * (rx1 - rx0) / 2 + rx0
-
-# Load initial positions from gdp1h_60d-pos0.h5
 with h5py.File('gdp1h_60d-pos0.h5', 'r') as h5f:
-    lon0 = np.array(h5f.get('lon0'))  # Initial longitude positions
-    lat0 = np.array(h5f.get('lat0'))  # Initial latitude positions
+    lon0 = np.array(h5f.get('lon0'))
+    lat0 = np.array(h5f.get('lat0'))
 ```
 
 
