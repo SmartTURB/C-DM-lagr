@@ -52,7 +52,7 @@ lon_idx, lat_idx = position_from_velocity(ve_idx, vn_idx, time, lon0[idx], lat0[
 
 ## Training
 
-Use [`scripts/palette_train.py`](./scripts/palette_train.py) to train the conditional diffusion model. Please refer to the parent repository’s [Training section](https://github.com/SmartTURB/diffusion-lagr#training) for detailed information about hyperparameter configuration. The only additional flag in this case is `--mask_mode`, which has the following options:
+Please refer to the parent repository’s [Training section](https://github.com/SmartTURB/diffusion-lagr#training) for detailed information about hyperparameter configuration. The only additional flag in this case is `--mask_mode`, which has the following options:
 
 - `center1d<lg>`: Specifies a central gap of size `<lg>`.
 - `right1d<lg>`: Specifies a right-end gap of size `<lg>`.
@@ -78,7 +78,7 @@ DIFFUSION_FLAGS="--diffusion_steps 800 --noise_schedule tanh6,1"
 TRAIN_FLAGS="--lr 1e-4 --batch_size 64"
 ```
 
-To start training, run the following command:
+Use [`scripts/palette_train.py`](./scripts/palette_train.py) to train the conditional diffusion model:
 
 ```bash
 mpiexec -n $NUM_GPUS python scripts/palette_train.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS
