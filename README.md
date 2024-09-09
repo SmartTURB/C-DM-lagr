@@ -52,4 +52,12 @@ lon_idx, lat_idx = position_from_velocity(ve_idx, vn_idx, time, lon0[idx], lat0[
 
 ## Training
 
+Use [`scripts/palette_train.py`](./scripts/palette_train.py) to train the conditional diffusion model. Please refer to the parent repository’s [Training section](https://github.com/SmartTURB/diffusion-lagr#training) for detailed information about hyperparameter configuration. The only additional flag in this case is `--mask_mode`, which has the following options:
+
+- `center1d<lg>`: Specifies a central gap of size `<lg>`.
+- `right1d<lg>`: Specifies a right-end gap of size `<lg>`.
+- `interp1d<scale_factor>`: Specifies a sample point every `<scale_factor>` points for interpolation cases.
+
+See the function `get_mask` in [`palette_diffusion/palette_datasets.py`](./palette_diffusion/palette_datasets.py#L87) for customizing the reconstruction scenario.
+
 ## Sampling
