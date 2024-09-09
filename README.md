@@ -12,17 +12,12 @@ This repository is based on [SmartTURB/diffusion-lagr](https://github.com/SmartT
 
 ## Installation
 
-This codebase runs in a similar environment as [SmartTURB/diffusion-lagr](https://github.com/SmartTURB/diffusion-lagr#development-environment). Check [`env_setup.txt`](./env_setup.txt) for installation details with required packages and dependencies.
+This codebase runs in a similar environment as [Development Environment](https://github.com/SmartTURB/diffusion-lagr#development-environment). Check [`env_setup.txt`](./env_setup.txt) for installation details with required packages and dependencies.
 
 ## Data Preparation
 
 ### Dataset: 3D HIT tracers
 
-Please refer to [SmartTURB/diffusion-lagr](https://github.com/SmartTURB/diffusion-lagr#preparing-data) for download and usage details of the file `Lagr_u3c_diffusion.h5`.
-
-To split the dataset into training and testing sets, run the following scripts from this repository:
-
-- `datasets/lagr/preprocessing-lagr_u1c-diffusion-splits.py` for the 1C case.
-- `datasets/lagr/preprocessing-lagr_u3c-diffusion-splits.py` for the 3C case.
+Please refer to [Preparing Data](https://github.com/SmartTURB/diffusion-lagr#preparing-data) for download and usage details of the file `Lagr_u3c_diffusion.h5`. Use the two scripts in [`datasets/lagr/`](./datasets/lagr/) to split the original dataset into 90% for training and 10% for testing for both the 1c and 3c cases.
 
 ### Dataset: 2D ocean drifters
