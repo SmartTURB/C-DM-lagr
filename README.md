@@ -60,4 +60,13 @@ Use [`scripts/palette_train.py`](./scripts/palette_train.py) to train the condit
 
 See the function `get_mask` in [`palette_diffusion/palette_datasets.py`](./palette_diffusion/palette_datasets.py#L87) for customizing the reconstruction scenario.
 
+For Lagrangian turbulence reconstruction with a central gap of size $50\tau_\eta$, use the following flags:
+
+```bash
+DATA_FLAGS="--mask_mode center1d500 --dataset_path datasets/lagr/Lagr_u3c_diffusion_splits.h5 --dataset_name train"
+MODEL_FLAGS="--dims 1 --image_size 2000 --in_channels 3 --num_channels 128 --num_res_blocks 3 --attention_resolutions 250,125 --channel_mult 1,1,2,3,4"
+DIFFUSION_FLAGS="--diffusion_steps 800 --noise_schedule tanh6,1"
+TRAIN_FLAGS="--lr 1e-4 --batch_size 64"
+```
+
 ## Sampling
