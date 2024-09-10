@@ -52,7 +52,7 @@ lon_idx, lat_idx = position_from_velocity(ve_idx, vn_idx, time, lon0[idx], lat0[
 
 ## Training
 
-Please refer to the parent repository’s [Training section](https://github.com/SmartTURB/diffusion-lagr#training) for detailed information about hyperparameter configuration. The only additional flag in this case is `--mask_mode`, which has the following options:
+Please refer to the parent repository’s [Training section](https://github.com/SmartTURB/diffusion-lagr#training) for detailed information, including hyperparameter configuration. The only additional flag in this case is `--mask_mode`, which has the following options:
 
 - `center1d<lg>`: Specifies a central gap of size `<lg>`.
 - `right1d<lg>`: Specifies a right-end gap of size `<lg>`.
@@ -84,9 +84,9 @@ Use [`scripts/palette_train.py`](./scripts/palette_train.py) to train the condit
 mpiexec -n $NUM_GPUS python scripts/palette_train.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS
 ```
 
-## Sampling
+## Reconstructing
 
-Please refer to the parent repository’s [Sampling section](https://github.com/SmartTURB/diffusion-lagr#sampling) for detailed information. The only additional option here is `--seed`, which sets the random seed for sampling.
+Please refer to the parent repository’s [Sampling section](https://github.com/SmartTURB/diffusion-lagr#sampling) for detailed information. The only additional option here is `--seed`, which sets the random seed for reconstruction.
 
 For Lagrangian turbulence reconstruction with a central gap of size $50\tau_\eta$, use the following flags:
 
@@ -95,4 +95,19 @@ DATA_FLAGS="--mask_mode center1d500 --dataset_path datasets/lagr/Lagr_u3c_diffus
 MODEL_FLAGS="--dims 1 --image_size 2000 --in_channels 3 --num_channels 128 --num_res_blocks 3 --attention_resolutions 250,125 --channel_mult 1,1,2,3,4"
 DIFFUSION_FLAGS="--diffusion_steps 800 --noise_schedule tanh6,1"
 SAMPLE_FLAGS="--num_samples 32768 --batch_size 64 --model_path /path/to/model.pt --seed 0"
+```
+
+For ocean drifter observation reconstruction with a central gap of 360 hours, use the following flags:
+
+```bash
+DATA_FLAGS="--mask_mode center1d360 --dataset_path datasets/gdp1h/gdp1h_v2c_diffusion_splits.h5 --dataset_name test"
+MODEL_FLAGS="--dims 1 --image_size 1440 --in_channels 2 --num_channels 128 --num_res_blocks 3 --attention_resolutions 180,90 --channel_mult 1,1,2,3,4"
+DIFFUSION_FLAGS="--diffusion_steps 800 --noise_schedule tanh6,1"
+SAMPLE_FLAGS="--num_samples 11545 --batch_size 64 --model_path /path/to/model.pt --seed 0"
+```
+
+Use [`scripts/palette_sample.py`](./scripts/palette_sample.py) to train the conditional diffusion model:
+
+```bash
+python scripts/palette_sample.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS $SAMPLE_FLAGS
 ```
