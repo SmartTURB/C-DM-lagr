@@ -106,7 +106,7 @@ DIFFUSION_FLAGS="--diffusion_steps 800 --noise_schedule tanh6,1"
 SAMPLE_FLAGS="--num_samples 11545 --batch_size 64 --model_path /path/to/model.pt --seed 0"
 ```
 
-Use [`scripts/palette_sample.py`](./scripts/palette_sample.py) to train the conditional diffusion model:
+Use [`scripts/palette_sample.py`](./scripts/palette_sample.py) to reconstruct the test data:
 
 ```bash
 python scripts/palette_sample.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS $SAMPLE_FLAGS
