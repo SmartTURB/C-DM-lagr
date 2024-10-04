@@ -20,9 +20,9 @@ Please refer to [Preparing Data](https://github.com/SmartTURB/diffusion-lagr#pre
 
 ### Dataset: 2D Ocean Drifters
 
-One can access the hourly drifter data at [this link](https://www.aoml.noaa.gov/phod/gdp/hourly_data.php). We used version 2.01 and selected the file `gdp-v2.01.nc`.
+One can access the hourly drifter data from the NOAA Global Drifter Program at [this link](https://www.aoml.noaa.gov/phod/gdp/hourly_data.php). We used version 2.01 and selected the file `gdp-v2.01.nc`.
 
-To preprocess the data, including (1) dividing trajectories into non-overlapping 60-day segments and (2) removing segments with spurious points of high velocity or acceleration, run the script [`datasets/gdp1h/create-gdp1h_60d-datasets/create-gdp1h_60d-datasets.sh`](./datasets/gdp1h/create-gdp1h_60d-datasets/create-gdp1h_60d-datasets.sh), which requires the `clouddrift` package ([clouddrift.org](https://clouddrift.org/)). This will output two files: `gdp1h_60d-diffusion.h5` and `gdp1h_60d-pos0.h5`, which can be loaded as follows:
+To preprocess the data, including (1) dividing trajectories into non-overlapping 60-day segments and (2) removing segments with spurious points of high velocity or acceleration, run the script [`datasets/gdp1h/create-gdp1h_60d-datasets/create-gdp1h_60d-datasets.sh`](./datasets/gdp1h/create-gdp1h_60d-datasets/create-gdp1h_60d-datasets.sh), which requires the `clouddrift` package ([clouddrift.org](https://clouddrift.org/)). This will output two files: `gdp1h_60d-diffusion.h5`, containing the processed velocity segments, and `gdp1h_60d-pos0.h5`, containing the initial positions of these segments. Both files are available on the INFN Open Access Repository at [this link](https://doi.org/10.15161/oar.it/211740), and can be loaded as follows:
 
 ```python
 import h5py
