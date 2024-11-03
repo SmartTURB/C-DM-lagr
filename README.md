@@ -1,6 +1,6 @@
 # C-DM-lagr
 
-This is the codebase for [Stochastic Reconstruction of Gappy Lagrangian Turbulent Signals by Conditional Generative Diffusion Models](arxiv_link_placeholder).
+This is the codebase for [Stochastic Reconstruction of Gappy Lagrangian Turbulent Signals by Conditional Generative Diffusion Models](https://arxiv.org/abs/2410.23971).
 
 This repository is based on [SmartTURB/diffusion-lagr](https://github.com/SmartTURB/diffusion-lagr), with added functionality to perform **gappy Lagrangian turbulent signals reconstruction** conditioned on the measurements outside the gap. Specifically, two additional modules have been implemented:
 
