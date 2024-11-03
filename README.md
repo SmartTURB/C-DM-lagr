@@ -66,7 +66,7 @@ For Lagrangian turbulence reconstruction with a central gap of size $50\tau_\eta
 DATA_FLAGS="--mask_mode center1d500 --dataset_path datasets/lagr/Lagr_u3c_diffusion_splits.h5 --dataset_name train"
 MODEL_FLAGS="--dims 1 --image_size 2000 --in_channels 3 --num_channels 128 --num_res_blocks 3 --attention_resolutions 250,125 --channel_mult 1,1,2,3,4"
 DIFFUSION_FLAGS="--diffusion_steps 800 --noise_schedule tanh6,1"
-TRAIN_FLAGS="--lr 1e-4 --batch_size 64"
+TRAIN_FLAGS="--lr 1e-4 --batch_size 64 --total_steps 250000"
 ```
 
 For ocean drifter observation reconstruction with a central gap of 360 hours, use the following flags:
@@ -75,7 +75,7 @@ For ocean drifter observation reconstruction with a central gap of 360 hours, us
 DATA_FLAGS="--mask_mode center1d360 --dataset_path datasets/gdp1h/gdp1h_v2c_diffusion_splits.h5 --dataset_name train"
 MODEL_FLAGS="--dims 1 --image_size 1440 --in_channels 2 --num_channels 128 --num_res_blocks 3 --attention_resolutions 180,90 --channel_mult 1,1,2,3,4"
 DIFFUSION_FLAGS="--diffusion_steps 800 --noise_schedule tanh6,1"
-TRAIN_FLAGS="--lr 1e-4 --batch_size 64"
+TRAIN_FLAGS="--lr 1e-4 --batch_size 64 --total_steps 250000"
 ```
 
 Use [`scripts/palette_train.py`](./scripts/palette_train.py) to train the conditional diffusion model:
@@ -83,6 +83,8 @@ Use [`scripts/palette_train.py`](./scripts/palette_train.py) to train the condit
 ```bash
 mpiexec -n $NUM_GPUS python scripts/palette_train.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS
 ```
+
+For most gap configurations (specified by `--mask_mode`) in this work, training was run on 4 A100 GPUs for 250,000 iterations, as set by the `--total_steps` flag, typically completing within approximately 24 hours.
 
 ## Reconstructing
 
