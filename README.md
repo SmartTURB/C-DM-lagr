@@ -52,7 +52,7 @@ lon_idx, lat_idx = position_from_velocity(ve_idx, vn_idx, time, lon0[idx], lat0[
 
 ## Training
 
-Please refer to the parent repository’s [Training section](https://github.com/SmartTURB/diffusion-lagr#training) for detailed information, including hyperparameter configuration. The only additional flag in this case is `--mask_mode`, which has the following options:
+Please refer to the parent repository’s [Training section](https://github.com/SmartTURB/diffusion-lagr#training) for detailed information, including hyperparameter configuration. The most important additional flag in this case is `--mask_mode`, which has the following options:
 
 - `center1d<lg>`: Specifies a central gap of size `<lg>`.
 - `right1d<lg>`: Specifies a right-end gap of size `<lg>`.
