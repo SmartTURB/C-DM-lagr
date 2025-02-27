@@ -5,7 +5,8 @@ setup(
     py_modules=[
         "guided_diffusion",
         "continuous_diffusion",
-        "palette_diffusion"
+        "palette_diffusion",
+        "tfg_diffusion"
     ],
     install_requires=[
         "blobfile>=1.0.5",
