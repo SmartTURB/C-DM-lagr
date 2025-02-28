@@ -2,11 +2,13 @@
 
 This is the codebase for [Stochastic Reconstruction of Gappy Lagrangian Turbulent Signals by Conditional Generative Diffusion Models](https://arxiv.org/abs/2410.23971).
 
-This repository is based on [SmartTURB/diffusion-lagr](https://github.com/SmartTURB/diffusion-lagr), with added functionality to perform **gappy Lagrangian turbulent signals reconstruction** conditioned on the measurements outside the gap. Specifically, two additional modules have been implemented:
+This repository is based on [SmartTURB/diffusion-lagr](https://github.com/SmartTURB/diffusion-lagr), with added functionality to perform **gappy Lagrangian turbulent signals reconstruction** conditioned on the measurements outside the gap. Specifically, three additional modules have been implemented:
 
 - **[continuous_diffusion](./continuous_diffusion)**: Enables diffusion models to condition on a continuous noise level rather than discrete timesteps. See [WaveGrad](https://arxiv.org/abs/2009.00713) for details.
   
 - **[palette_diffusion](./palette_diffusion)**: Enables conditional diffusion models for image-to-image translation tasks. See [Palette](https://arxiv.org/abs/2111.05826) for details.
+
+- **[tfg_diffusion](./tfg_diffusion)**: Enables reconstruction with an unconditional diffusion model using a special case of training-free guidance (TFG), diffusion posterior sampling (DPS). See [TFG](https://arxiv.org/abs/2409.15761) and [DPS](https://arxiv.org/abs/2209.14687) for details.
 
 ## Installation
 
