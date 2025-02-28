@@ -120,11 +120,15 @@ python scripts/palette_sample.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS $SAMP
 
 Please refer to the [parent repository](https://github.com/SmartTURB/diffusion-lagr#training) for detailed instructions on training an unconditional diffusion model. To ensure compatibility with DPS reconstruction, `--use_continuous_diffusion=True` must be set during training.
 
-For the **Lagrangian turbulence 3c case**, we used the following flags:
+For **3D HIT tracers**, we use the following settings to train an unconditional diffusion model:
 
 ```bash
 DATA_FLAGS="--dataset_path datasets/lagr/Lagr_u3c_diffusion_splits.h5 --dataset_name train"
 MODEL_FLAGS="--dims 1 --image_size 2000 --in_channels 3 --num_channels 128 --num_res_blocks 3 --attention_resolutions 250,125 --channel_mult 1,1,2,3,4"
 DIFFUSION_FLAGS="--use_continuous_diffusion True --diffusion_steps 800 --noise_schedule tanh6,1"
 TRAIN_FLAGS="--lr 1e-4 --batch_size 64 --total_steps 250000"
+
+mpiexec -n 4 python scripts/turb_train.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS
 ```
+
+The trained checkpoint is available for download [here](https://www.dropbox.com/scl/fi/3zt6aainke45cinfy6at4/ema_0.9999_250000.pt?rlkey=n1p3c4m8mparh6u92327nv26k&dl=0).
