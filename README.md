@@ -8,7 +8,7 @@ This repository is based on [SmartTURB/diffusion-lagr](https://github.com/SmartT
   
 - **[palette_diffusion](./palette_diffusion)**: Enables conditional diffusion models (C-DM) for image-to-image translation tasks. See [Palette](https://arxiv.org/abs/2111.05826) for details.
 
-- **[tfg_diffusion](./tfg_diffusion)**: Enables reconstruction with an unconditional diffusion model using a special case of training-free guidance (TFG), diffusion posterior sampling (DPS). See [TFG](https://arxiv.org/abs/2409.15761) and [DPS](https://arxiv.org/abs/2209.14687) for details.
+- **[tfg_diffusion](./tfg_diffusion)**: Enables reconstruction with an unconditional diffusion model using a special case of training-free guidance ([TFG](https://arxiv.org/abs/2409.15761)), diffusion posterior sampling ([DPS](https://arxiv.org/abs/2209.14687)).
 
 ## Installation
 
@@ -120,7 +120,7 @@ python scripts/palette_sample.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS $SAMP
 
 Please refer to the [parent repository](https://github.com/SmartTURB/diffusion-lagr#training) for detailed instructions on training an unconditional diffusion model. To ensure compatibility with DPS reconstruction, `--use_continuous_diffusion=True` must be set during training.
 
-For **3D HIT tracers**, we use the following settings to train an unconditional diffusion model:
+For 3D HIT tracers, we use the following settings to train an unconditional diffusion model:
 
 ```bash
 DATA_FLAGS="--dataset_path datasets/lagr/Lagr_u3c_diffusion_splits.h5 --dataset_name train"
