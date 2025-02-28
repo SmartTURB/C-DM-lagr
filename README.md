@@ -6,7 +6,7 @@ This repository is based on [SmartTURB/diffusion-lagr](https://github.com/SmartT
 
 - **[continuous_diffusion](./continuous_diffusion)**: Enables diffusion models to condition on a continuous noise level rather than discrete timesteps. See [WaveGrad](https://arxiv.org/abs/2009.00713) for details.
   
-- **[palette_diffusion](./palette_diffusion)**: Enables conditional diffusion models for image-to-image translation tasks. See [Palette](https://arxiv.org/abs/2111.05826) for details.
+- **[palette_diffusion](./palette_diffusion)**: Enables conditional diffusion models (C-DM) for image-to-image translation tasks. See [Palette](https://arxiv.org/abs/2111.05826) for details.
 
 - **[tfg_diffusion](./tfg_diffusion)**: Enables reconstruction with an unconditional diffusion model using a special case of training-free guidance (TFG), diffusion posterior sampling (DPS). See [TFG](https://arxiv.org/abs/2409.15761) and [DPS](https://arxiv.org/abs/2209.14687) for details.
 
@@ -52,7 +52,7 @@ time = np.arange(1440) * 3600  # units: seconds
 lon_idx, lat_idx = position_from_velocity(ve_idx, vn_idx, time, lon0[idx], lat0[idx])
 ```
 
-## Training
+## C-DM Training
 
 Please refer to the parent repository’s [Training section](https://github.com/SmartTURB/diffusion-lagr#training) for detailed information, including hyperparameter configuration. The most important additional flag in this case is `--mask_mode`, which has the following options:
 
@@ -88,7 +88,7 @@ mpiexec -n $NUM_GPUS python scripts/palette_train.py $DATA_FLAGS $MODEL_FLAGS $D
 
 For most gap configurations (specified by `--mask_mode`) in this work, training was run on 4 A100 GPUs for 250,000 iterations, as set by the `--total_steps` flag, typically completing within approximately 24 hours.
 
-## Reconstructing
+## Reconstruction with C-DM
 
 Please refer to the parent repository’s [Sampling section](https://github.com/SmartTURB/diffusion-lagr#sampling) for detailed information. The only additional option here is `--seed`, which sets the random seed for reconstruction.
 
