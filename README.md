@@ -132,3 +132,16 @@ mpiexec -n 4 python scripts/turb_train.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FL
 ```
 
 The trained checkpoint is available for download [here](https://www.dropbox.com/scl/fi/3zt6aainke45cinfy6at4/ema_0.9999_250000.pt?rlkey=n1p3c4m8mparh6u92327nv26k&dl=0).
+
+The following settings can be used to perform DPS reconstruction:
+
+```bash
+DATA_FLAGS="--mask_mode center1d500 --dataset_path /mnt/petaStor/li/Job/TFG-DM-lagr/datasets/lagr/Lagr_u3c_diffusion_splits_noisy_scale1e-4.h5 --dataset_name test"
+MODEL_FLAGS="--dims 1 --image_size 2000 --in_channels 3 --num_channels 128 --num_res_blocks 3 --attention_resolutions 250,125 --channel_mult 1,1,2,3,4"
+DIFFUSION_FLAGS="--diffusion_steps 800 --noise_schedule tanh6,1"
+SAMPLE_FLAGS="--num_samples 32768 --batch_size 64 --model_path /mnt/petaStor/li/Job/TFG-DM-lagr/experiments/lagr_u3c_tfg-IS2000-NC128-NRB3-DS800-NStanh6_1-LR1e-4-BS256-train/ema_0.9999_250000.pt --seed 0"
+GUIDANCE_FLAGS="--guidance_name dps --guidance_strength 64.0"
+
+python scripts/tfg_sample.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS $SAMPLE_FLAGS $GUIDANCE_FLAGS
+```
+
