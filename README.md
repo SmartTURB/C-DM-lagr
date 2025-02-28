@@ -145,3 +145,8 @@ GUIDANCE_FLAGS="--guidance_name dps --guidance_strength 64.0"
 python scripts/tfg_sample.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS $SAMPLE_FLAGS $GUIDANCE_FLAGS
 ```
 
+Compared to [Reconstruction with C-DM](#reconstruction-with-c-dm), the only additional flag required for DPS is:
+
+```bash
+GUIDANCE_FLAGS="--guidance_name dps --guidance_strength 64.0"
+```
