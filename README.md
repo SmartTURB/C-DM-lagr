@@ -115,3 +115,9 @@ Use [`scripts/palette_sample.py`](./scripts/palette_sample.py) to reconstruct th
 ```bash
 python scripts/palette_sample.py $DATA_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS $SAMPLE_FLAGS
 ```
+
+## Reconstruction with DPS
+
+Please refer to the [parent repository](https://github.com/SmartTURB/diffusion-lagr#training) for detailed instructions on training an unconditional diffusion model. To ensure compatibility with DPS reconstruction, `--use_continuous_diffusion=True` must be set during training.
+
+For the **Lagrangian turbulence 3c case**, we used the following flags:
